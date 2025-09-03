@@ -13,6 +13,10 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Hello" });
 });
 
+app.get("/evana", (req, res) => {
+  res.status(200).json({ message: "Hello Evana" });
+});
+
 app.post("/data", (req, res) => {
   res.status(200).json({
     data: req.body,
@@ -27,7 +31,7 @@ app.post("/ai", async (req, res) => {
     });
 
     const response = await client.chat.completions.create({
-      model: "gpt-5",
+      model: "gpt-4o",
       messages: [{ role: "user", content: req.body.prompt }],
     });
     res.status(200).json({ output: response.choices[0].message.content });
